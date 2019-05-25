@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'ui/accounts_page.dart';
-import 'ui/add_record_page.dart';
-import 'ui/more_page.dart';
-import 'ui/statistics_page.dart';
-import 'ui/wallet_now_page.dart';
+import 'package:flutter_wallet_app/src/ui/pages/accounts_page.dart';
+import 'package:flutter_wallet_app/src/ui/pages/add_record_page.dart';
+import 'package:flutter_wallet_app/src/ui/pages/more_page.dart';
+import 'package:flutter_wallet_app/src/ui/pages/statistics_page.dart';
+import 'package:flutter_wallet_app/src/ui/pages/wallet_now_page.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
