@@ -8,25 +8,40 @@ import 'package:flutter_wallet_app/src/ui/pages/wallet_now_page.dart';
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
-  final String title;
+  String title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
-    with SingleTickerProviderStateMixin {
-  TabController tabController;
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
+  final List<MyTabs> _tabs = [
+    MyTabs(title: "Accounts"),
+    MyTabs(title: "Wallet Now"),
+    MyTabs(title: "Add Record"),
+    MyTabs(title: "Statistics"),
+    MyTabs(title: "More"),
+  ];
+  MyTabs _myHandler;
+  TabController _tabController;
 
   @override
   void initState() {
     super.initState();
-    tabController = TabController(length: 5, vsync: this);
+    _tabController = TabController(length: 5, vsync: this);
+    _myHandler = _tabs[0];
+    _tabController.addListener(_handleSelected);
+  }
+
+  void _handleSelected() {
+    setState(() {
+      _myHandler = _tabs[_tabController.index];
+    });
   }
 
   @override
   void dispose() {
-    tabController.dispose();
+    _tabController.dispose();
     super.dispose();
   }
 
@@ -34,30 +49,27 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(_myHandler.title),
       ),
       bottomNavigationBar: Material(
         color: Colors.green,
-        child: TabBar(
-          tabs: <Widget>[
-            Tab(
-              icon: Icon(Icons.account_balance_wallet),
-            ),
-            Tab(
-              icon: Icon(Icons.credit_card),
-            ),
-            Tab(
-              icon: Icon(Icons.add),
-            ),
-            Tab(
-              icon: Icon(Icons.score),
-            ),
-            Tab(
-              icon: Icon(Icons.more_horiz),
-            ),
-          ],
-          controller: tabController,
-        ),
+        child: TabBar(tabs: <Widget>[
+          Tab(
+            icon: Icon(Icons.account_balance_wallet),
+          ),
+          Tab(
+            icon: Icon(Icons.credit_card),
+          ),
+          Tab(
+            icon: Icon(Icons.add),
+          ),
+          Tab(
+            icon: Icon(Icons.score),
+          ),
+          Tab(
+            icon: Icon(Icons.more_horiz),
+          ),
+        ], controller: _tabController),
       ),
       body: TabBarView(
         children: <Widget>[
@@ -67,8 +79,16 @@ class _MyHomePageState extends State<MyHomePage>
           StatisticsPage(),
           MorePage(),
         ],
-        controller: tabController,
+        controller: _tabController,
       ),
     );
   }
 }
+
+class MyTabs {
+  final String title;
+
+  MyTabs({this.title});
+}
+
+enum AppBarTitles { Accounts, WalletNow, AddRecord, Statistics, More }

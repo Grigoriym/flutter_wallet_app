@@ -19,7 +19,6 @@ class _AccountsPageState extends State<AccountsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black12,
       body: ListView.builder(
         itemBuilder: (context, position) {
           final item = list[position];
@@ -61,7 +60,6 @@ class CardView extends StatelessWidget {
             child: Container(
               alignment: Alignment.topCenter,
               child: Text(category),
-              color: Colors.blueAccent,
             ),
           ),
           Column(

@@ -8,7 +8,7 @@ class _AddRecordState extends State<AddRecordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigoAccent,
+
     );
   }
 }
