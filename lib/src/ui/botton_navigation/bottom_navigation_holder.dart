@@ -45,12 +45,49 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  Widget MyAppBar() {
+    Widget leading;
+    Widget rightAction;
+
+    if (_tabController.index == 2) {
+      leading = Center(
+        child: Text(
+          "Cancel",
+          textScaleFactor: 1.5,
+          style: TextStyle(
+            fontSize: 12.0,
+            color: Colors.white,
+          ),
+        ),
+      );
+      rightAction = Center(
+        child: Text(
+          "Done",
+          textScaleFactor: 1.5,
+          style: TextStyle(
+            fontSize: 12.0,
+            color: Colors.white,
+          ),
+        ),
+      );
+    } else {
+      leading = Container();
+      rightAction = Container();
+    }
+    return AppBar(
+      centerTitle: true,
+      title: Text(_myHandler.title),
+      leading: leading,
+      actions: <Widget>[
+        rightAction,
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(_myHandler.title),
-      ),
+      appBar: MyAppBar(),
       bottomNavigationBar: Material(
         color: Colors.green,
         child: TabBar(tabs: <Widget>[
@@ -90,5 +127,3 @@ class MyTabs {
 
   MyTabs({this.title});
 }
-
-enum AppBarTitles { Accounts, WalletNow, AddRecord, Statistics, More }
