@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_wallet_app/src/ui/pages/accounts_page.dart';
 import 'package:flutter_wallet_app/src/ui/pages/add_record_page.dart';
 import 'package:flutter_wallet_app/src/ui/pages/more_page.dart';
