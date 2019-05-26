@@ -12,7 +12,7 @@ class FlutterWalletApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: FieldConstants.APP_TITLE),
+      home: BottomNavigationHolder(title: FieldConstants.APP_TITLE),
     );
   }
 }

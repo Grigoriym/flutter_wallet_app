@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'add_record_choose_category_page.dart';
 
 class MainPageViewPage extends StatefulWidget {
   _MainPageViewPageState createState() => _MainPageViewPageState();
@@ -18,6 +19,58 @@ class _MainPageViewPageState extends State<MainPageViewPage>
   void dispose() {
     _tabController.dispose();
     super.dispose();
+  }
+
+  Widget expensesWidget() {
+    return generalWidgetForTabViews(0);
+  }
+
+  Widget incomeWidget() {
+    return generalWidgetForTabViews(1);
+  }
+
+  Widget transferWidget() {
+    return generalWidgetForTabViews(2);
+  }
+
+  Widget generalWidgetForTabViews(int tabPosition) {
+    return Column(
+      children: <Widget>[
+        Expanded(
+          flex: 2,
+          child: Container(
+            color: Colors.black,
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  color: Colors.blue,
+                ),
+              ),
+              Expanded(
+                  child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AddRecordChooseCategoryPage(),
+                    ),
+                  );
+                },
+                child: Container(
+                  color: Colors.indigo,
+                ),
+              ))
+            ],
+          ),
+        ),
+      ],
+    );
   }
 
   @override
@@ -43,8 +96,13 @@ class _MainPageViewPageState extends State<MainPageViewPage>
         children: <Widget>[
           Expanded(
             flex: 1,
-            child: Container(
-              color: Colors.redAccent,
+            child: TabBarView(
+              children: <Widget>[
+                expensesWidget(),
+                incomeWidget(),
+                transferWidget(),
+              ],
+              controller: _tabController,
             ),
           ),
           Expanded(

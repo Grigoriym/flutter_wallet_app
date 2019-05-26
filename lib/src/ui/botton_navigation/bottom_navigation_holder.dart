@@ -5,16 +5,17 @@ import 'package:flutter_wallet_app/src/ui/pages/more_page.dart';
 import 'package:flutter_wallet_app/src/ui/pages/statistics_page.dart';
 import 'package:flutter_wallet_app/src/ui/pages/wallet_now_page.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class BottomNavigationHolder extends StatefulWidget {
 
-  String title;
+  final String title;
+
+  BottomNavigationHolder({Key key, this.title}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _BottomNavigationHolderState createState() => _BottomNavigationHolderState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
+class _BottomNavigationHolderState extends State<BottomNavigationHolder> with TickerProviderStateMixin {
   final List<MyTabs> _tabs = [
     MyTabs(title: "Accounts"),
     MyTabs(title: "Wallet Now"),
