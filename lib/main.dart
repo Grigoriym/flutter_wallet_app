@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'bottom_navigation_holder.dart';
-import 'utils/FieldConstants.dart';
+import 'package:flutter_wallet_app/src/ui/botton_navigation/bottom_navigation_holder.dart';
+import 'src/utils/field_constants.dart';
 
 void main() => runApp(FlutterWalletApp());
 
@@ -12,7 +12,7 @@ class FlutterWalletApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: FieldConstants.APP_TITLE),
+      home: BottomNavigationHolder(title: FieldConstants.APP_TITLE),
     );
   }
 }
