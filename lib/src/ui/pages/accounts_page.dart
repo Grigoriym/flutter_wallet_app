@@ -1,31 +1,54 @@
 import 'package:flutter/material.dart';
 
 import '../../models/record_model.dart';
+import 'package:flutter_wallet_app/src/db/db_helper.dart';
 
 class AccountsPage extends StatefulWidget {
   _AccountsPageState createState() => _AccountsPageState();
 }
 
 class _AccountsPageState extends State<AccountsPage> {
+  final dbHelper = DbHelper.instance;
+
   var list = [
-    RecordModel("!23", "123", "!234", "6:56AM", "Dgdfg", "Dfgdfg", 1813,
+    RecordModel(1, "!23", "123", "!234", "6:56AM", "Dgdfg", "Dfgdfg", 1813,
         "g35hg5egfg", "General - Food'n Drinks"),
-    RecordModel("123fsdfsd", "h5h", "!23465j4", "10:01AM", "Dgdfg", "Dfgdfg",
+    RecordModel(2, "123fsdfsd", "h5h", "!23465j4", "10:01AM", "Dgdfg", "Dfgdfg",
         180, "VVVVVV", "Health care, doctor"),
-    RecordModel("!sdfsdf", "5h5", "!234", "09:00AM", "Dgdfg", "Dfgdfg", 630,
+    RecordModel(3, "!sdfsdf", "5h5", "!234", "09:00AM", "Dgdfg", "Dfgdfg", 630,
         "ym68j4j4", "Books, audio"),
   ];
 
   @override
+  void initState() {
+    super.initState();
+    for (var i in list) {
+      dbHelper.insertRecord(i);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        itemBuilder: (context, position) {
-          final item = list[position];
-          return CardView(
-              category: item.category, sum: item.sum, time: item.time);
+      body: FutureBuilder<List<RecordModel>>(
+        future: dbHelper.getRecords(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData)
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          return ListView.builder(
+            itemBuilder: (context, position) {
+              final item = snapshot.data[position];
+              return CardView(
+                category: item.category,
+                sum: item.sum,
+                time: item.time,
+              );
+            },
+            itemCount: list.length,
+          );
         },
-        itemCount: list.length,
       ),
     );
   }
