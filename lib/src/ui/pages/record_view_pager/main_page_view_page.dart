@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'add_record_choose_category_page.dart';
+import 'package:flutter_wallet_app/src/models/record_model.dart';
+import 'package:flutter_wallet_app/src/db/db_helper.dart';
 
 class MainPageViewPage extends StatefulWidget {
   _MainPageViewPageState createState() => _MainPageViewPageState();
@@ -34,6 +36,8 @@ class _MainPageViewPageState extends State<MainPageViewPage>
   }
 
   Widget generalWidgetForTabViews(int tabPosition) {
+    final dbHelper = DbHelper.instance;
+
     return Column(
       children: <Widget>[
         Expanded(
@@ -53,19 +57,27 @@ class _MainPageViewPageState extends State<MainPageViewPage>
                 ),
               ),
               Expanded(
-                  child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AddRecordChooseCategoryPage(),
-                    ),
-                  );
-                },
-                child: Container(
-                  color: Colors.indigo,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddRecordChooseCategoryPage(),
+                      ),
+                    );
+                  },
+                  child: FutureBuilder<List<RecordModel>>(
+                    future: dbHelper.getRecords(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData)
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      return Icon(Icons.account_balance);
+                    },
+                  ),
                 ),
-              ))
+              ),
             ],
           ),
         ),

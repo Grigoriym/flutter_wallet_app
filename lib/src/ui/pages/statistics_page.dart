@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../models/ui/statistics_model.dart';
+import 'package:flutter_wallet_app/src/models/ui/statistics_model.dart';
 
 class StatisticsPage extends StatefulWidget {
   _StatisticsPageState createState() => _StatisticsPageState();

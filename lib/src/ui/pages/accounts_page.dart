@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../models/record_model.dart';
+import 'package:flutter_wallet_app/src/models/record_model.dart';
 import 'package:flutter_wallet_app/src/db/db_helper.dart';
 
 class AccountsPage extends StatefulWidget {

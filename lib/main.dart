@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_wallet_app/src/ui/botton_navigation/bottom_navigation_holder.dart';
-import 'src/utils/field_constants.dart';
+import 'package:flutter_wallet_app/src/utils/field_constants.dart';
 
 void main() => runApp(FlutterWalletApp());
 
