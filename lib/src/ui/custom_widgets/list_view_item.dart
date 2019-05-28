@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_wallet_app/src/models/ui/record_details_model.dart';
-import 'package:flutter_wallet_app/src/ui/botton_navigation/bottom_navigation_holder.dart';
+import 'package:flutter_wallet_app/src/ui/bottom_navigation/bottom_navigation_holder.dart';
 
 class ListViewItem extends StatefulWidget {
   final List<RecordDetailsModel> items;

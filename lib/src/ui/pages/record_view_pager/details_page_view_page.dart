@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_wallet_app/src/models/ui/record_details_model.dart';
 import 'package:flutter_wallet_app/src/ui/custom_widgets/list_view_item.dart';
@@ -23,12 +26,16 @@ class _DetailsPageViewPageState extends State<DetailsPageViewPage> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        TextField(
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            hintText: "Details",
-          ),
-        ),
+        Platform.isAndroid
+            ? TextField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: "Details",
+                ),
+              )
+            : CupertinoTextField(
+                placeholder: "Details",
+              ),
         Flexible(
           child: ListViewItem(
             items: items,

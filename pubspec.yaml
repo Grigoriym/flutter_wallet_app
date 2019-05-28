@@ -6,6 +6,9 @@ version: 1.0.4+1
 environment:
   sdk: ">=2.1.0 <3.0.0"
 
+assets:
+  - secrets.json
+
 dependencies:
   flutter:
     sdk: flutter
@@ -14,6 +17,9 @@ dependencies:
 
   sqflite: ^1.1.0
   path_provider: ^1.1.0
+  flutter_platform_widgets: ^0.10.0
+  rxdart: ^0.22.0
+  http: ^0.12.0+2
 
 dev_dependencies:
   flutter_test:
