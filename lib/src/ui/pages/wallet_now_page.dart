@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_wallet_app/src/models/curerncy_model.dart';
 import 'package:flutter_wallet_app/src/blocs/currency_bloc.dart';
+import 'package:flutter_wallet_app/src/models/curerncy_model.dart';
 
 class WalletNowPage extends StatefulWidget {
   _WalletNowPageState createState() => _WalletNowPageState();

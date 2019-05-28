@@ -16,7 +16,7 @@ class CurrencyApiProvider {
 
   Future<CurrencyModel> fetchCurrencies(String fC, String sC) async {
     final response = await client.get(
-        "https://free.currconv.com/api/v7/convert?q=USD_KZT,KZT_USD&apiKey=2f2315d8d6c6b3f2ef50&compact=ultra");
+        "${FieldConstants.CURRENCY_BASE_URL}convert?q=USD_KZT,KZT_USD&apiKey=2f2315d8d6c6b3f2ef50&compact=ultra");
     if (response.statusCode == 200) {
       return CurrencyModel.fromJson(json.decode(response.body), "USD", "KZT");
     } else {
