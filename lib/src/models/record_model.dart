@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'record_model.g.dart';
+
+@JsonSerializable()
 class RecordModel {
   final int id;
   final double sum;
@@ -23,6 +28,10 @@ class RecordModel {
     this.category,
   );
 
+  factory RecordModel.fromJson(Map<String, dynamic> json) => _$RecordModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RecordModelToJson(this);
+
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -37,19 +46,19 @@ class RecordModel {
       'warranty': warranty
     };
   }
-
-  String toString() {
-    return '''[
-    id: $id,
-    sum: $sum,
-    paymentType: $paymentType,
-    category: $category,
-    labels: $labels,
-    payee: $payee,
-    date: $date,
-    time: $time,
-    status: $status,
-    warranty: $warranty
-    ]''';
-  }
+//
+//  String toString() {
+//    return '''[
+//    id: $id,
+//    sum: $sum,
+//    paymentType: $paymentType,
+//    category: $category,
+//    labels: $labels,
+//    payee: $payee,
+//    date: $date,
+//    time: $time,
+//    status: $status,
+//    warranty: $warranty
+//    ]''';
+//  }
 }

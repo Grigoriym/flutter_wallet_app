@@ -1,4 +1,4 @@
-import 'package:flutter_wallet_app/src/models/curerncy_model.dart';
+import 'package:flutter_wallet_app/src/models/currency_model.dart';
 import 'package:flutter_wallet_app/src/repository/repository.dart';
 import 'package:rxdart/rxdart.dart';
 
